@@ -1,13 +1,17 @@
 package http
 
 import (
+	"github.com/RogerDurdn/ConfigurationService/pkg/lib"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 )
 
-func Server()  {
 
+var ds lib.DataSource
+
+func Server(dataSource lib.DataSource)  {
+	ds = dataSource
 	r := gin.Default()
 
 	apiEndpoints(r.Group("/api"))
@@ -24,7 +28,7 @@ func actuatorEndpoints(rg *gin.RouterGroup)  {
 }
 
 func getDcConfiguration(c *gin.Context)  {
-	c.JSON(http.StatusOK, gin.H{"config":"some-config"})
+	c.JSON(http.StatusOK, ds.FetchDcData())
 }
 
 func getStatus(c *gin.Context)  {
