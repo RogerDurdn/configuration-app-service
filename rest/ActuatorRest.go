@@ -6,11 +6,10 @@ import (
 	"net/http"
 )
 
-func ActuatorEndpoints(rg *gin.RouterGroup, dataSource lib.DataSource)  {
+func ActuatorEndpoints(rg *gin.RouterGroup, dataSource lib.DataSource) {
 	rg.GET("/", getStatus)
 }
 
-func getStatus(c *gin.Context)  {
-	c.JSON(http.StatusOK, gin.H{"status":"get-status"})
+func getStatus(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"status": "get-status"})
 }
-
