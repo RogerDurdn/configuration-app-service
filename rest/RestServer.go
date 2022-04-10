@@ -12,7 +12,7 @@ func Server(dataSource lib.DataSource) {
 	r := gin.Default()
 	ApiEndpoints(r.Group("/api"), dataSource)
 	ActuatorEndpoints(r.Group("/status"), dataSource)
-	log.Panic(r.Run(":3000"))
+	log.Panic(r.Run(":9093"))
 }
 
 func AbortAndBadRequest(context *gin.Context) {
